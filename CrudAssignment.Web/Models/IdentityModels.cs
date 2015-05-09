@@ -21,7 +21,7 @@ namespace CrudAssignment.Web.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("CrudAssignment", throwIfV1Schema: false)
+            : base("CrudAssignmentContext", throwIfV1Schema: false)
         {
         }
 
