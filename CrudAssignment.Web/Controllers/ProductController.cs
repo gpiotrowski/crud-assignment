@@ -8,17 +8,31 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CrudAssignment.Entities.Models;
+using CrudAssignment.Service;
+using Repository.Pattern.Infrastructure;
+using Repository.Pattern.UnitOfWork;
 
 namespace CrudAssignment.Web.Controllers
 {
     public class ProductController : Controller
     {
-        private CrudAssignmentContext db = new CrudAssignmentContext();
+        private readonly IProductService _productService;
+        private readonly ICategoryService _categoryService;
+        private readonly ISupplierService _supplierService;
+        private readonly IUnitOfWorkAsync _unitOfWork;
+
+        public ProductController(IProductService productService, ICategoryService categoryService, ISupplierService supplierService, IUnitOfWorkAsync unitOfWork)
+        {
+            _productService = productService;
+            _categoryService = categoryService;
+            _supplierService = supplierService;
+            _unitOfWork = unitOfWork;
+        }
 
         // GET: Product
         public async Task<ActionResult> Index()
         {
-            var products = db.Products.Include(p => p.Category).Include(p => p.Supplier);
+            var products = _productService.Queryable().Include(p => p.Category).Include(p => p.Supplier);
             return View(await products.ToListAsync());
         }
 
@@ -29,7 +43,7 @@ namespace CrudAssignment.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await db.Products.FindAsync(id);
+            Product product = await _productService.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -40,8 +54,8 @@ namespace CrudAssignment.Web.Controllers
         // GET: Product/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
-            ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name");
+            ViewBag.CategoryId = new SelectList(_categoryService.Queryable().ToList(), "Id", "Name");
+            ViewBag.SupplierId = new SelectList(_supplierService.Queryable().ToList(), "Id", "Name");
             return View();
         }
 
@@ -54,13 +68,13 @@ namespace CrudAssignment.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
-                await db.SaveChangesAsync();
+                _productService.Insert(product);
+                await _unitOfWork.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
-            ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name", product.SupplierId);
+            ViewBag.CategoryId = new SelectList(await _categoryService.Queryable().ToListAsync(), "Id", "Name", product.CategoryId);
+            ViewBag.SupplierId = new SelectList(await _supplierService.Queryable().ToListAsync(), "Id", "Name", product.SupplierId);
             return View(product);
         }
 
@@ -71,13 +85,13 @@ namespace CrudAssignment.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await db.Products.FindAsync(id);
+            Product product = await _productService.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
-            ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name", product.SupplierId);
+            ViewBag.CategoryId = new SelectList(await _categoryService.Queryable().ToListAsync(), "Id", "Name", product.CategoryId);
+            ViewBag.SupplierId = new SelectList(await _supplierService.Queryable().ToListAsync(), "Id", "Name", product.SupplierId);
             return View(product);
         }
 
@@ -90,12 +104,13 @@ namespace CrudAssignment.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                product.ObjectState = ObjectState.Modified;
+                _productService.Update(product);
+                await _unitOfWork.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
-            ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name", product.SupplierId);
+            ViewBag.CategoryId = new SelectList(await _categoryService.Queryable().ToListAsync(), "Id", "Name", product.CategoryId);
+            ViewBag.SupplierId = new SelectList(await _supplierService.Queryable().ToListAsync(), "Id", "Name", product.SupplierId);
             return View(product);
         }
 
@@ -106,7 +121,7 @@ namespace CrudAssignment.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await db.Products.FindAsync(id);
+            Product product = await _productService.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -119,17 +134,16 @@ namespace CrudAssignment.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
-            Product product = await db.Products.FindAsync(id);
-            db.Products.Remove(product);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            _productService.Delete(id);
+            await _unitOfWork.SaveChangesAsync();
+            return RedirectToAction("Index"); 
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _unitOfWork.Dispose();
             }
             base.Dispose(disposing);
         }
