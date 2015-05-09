@@ -14,6 +14,7 @@ using Repository.Pattern.UnitOfWork;
 
 namespace CrudAssignment.Web.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
