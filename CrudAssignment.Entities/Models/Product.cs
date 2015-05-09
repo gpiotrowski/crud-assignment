@@ -4,10 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Repository.Pattern.Ef6;
 
 namespace CrudAssignment.Entities.Models
 {
-    public class Product
+    public class Product : Entity
     {
         public string Id { get; set; }
         public string Name { get; set; }
