@@ -45,9 +45,12 @@ namespace CrudAssignment.Web.App_Start
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IUnitOfWorkAsync, UnitOfWork>(new PerRequestLifetimeManager());
             container.RegisterType<IDataContextAsync, CrudAssignmentContext>(new PerRequestLifetimeManager());
-            container.RegisterType<IProductService, ProductService>(new PerRequestLifetimeManager());
-            container.RegisterType<IRepositoryAsync<Product>, Repository<Product>>(new PerRequestLifetimeManager());
-
+            container.RegisterType<IProductService, ProductService>();
+            container.RegisterType<IRepositoryAsync<Product>, Repository<Product>>();
+            container.RegisterType<ICategoryService, CategoryService>();
+            container.RegisterType<IRepositoryAsync<Category>, Repository<Category>>();
+            container.RegisterType<ISupplierService, SupplierService>();
+            container.RegisterType<IRepositoryAsync<Supplier>, Repository<Supplier>>();
         }
     }
 }
