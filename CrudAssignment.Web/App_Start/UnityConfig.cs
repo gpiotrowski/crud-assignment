@@ -1,6 +1,12 @@
 using System;
+using System.Data.Common;
+using System.Data.Entity;
 using CrudAssignment.Entities.Models;
 using CrudAssignment.Service;
+using CrudAssignment.Web.Controllers;
+using CrudAssignment.Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using Repository.Pattern.DataContext;
@@ -43,6 +49,14 @@ namespace CrudAssignment.Web.App_Start
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            //ASP.NET Membership
+            container.RegisterType<UserManager<ApplicationUser>>(new HierarchicalLifetimeManager());
+            container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
+            container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
+            container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<ManageController>(new InjectionConstructor());
+
             container.RegisterType<IUnitOfWorkAsync, UnitOfWork>(new PerRequestLifetimeManager());
             container.RegisterType<IDataContextAsync, CrudAssignmentContext>(new PerRequestLifetimeManager());
             container.RegisterType<IProductService, ProductService>();
