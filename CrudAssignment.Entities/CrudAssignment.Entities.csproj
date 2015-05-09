@@ -56,6 +56,10 @@
     <Compile Include="Migrations\201505091608122_ProductRelatedEntities.Designer.cs">
       <DependentUpon>201505091608122_ProductRelatedEntities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505091728093_ProductRelatedEntitiesFix.cs" />
+    <Compile Include="Migrations\201505091728093_ProductRelatedEntitiesFix.Designer.cs">
+      <DependentUpon>201505091728093_ProductRelatedEntitiesFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AspNetRole.cs" />
     <Compile Include="Models\AspNetUser.cs" />
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505091608122_ProductRelatedEntities.resx">
       <DependentUpon>201505091608122_ProductRelatedEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505091728093_ProductRelatedEntitiesFix.resx">
+      <DependentUpon>201505091728093_ProductRelatedEntitiesFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
