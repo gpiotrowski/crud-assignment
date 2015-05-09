@@ -1,10 +1,11 @@
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using CrudAssignment.Entities.Models.Mapping;
+using Repository.Pattern.Ef6;
 
 namespace CrudAssignment.Entities.Models
 {
-    public partial class CrudAssignmentContext : DbContext
+    public partial class CrudAssignmentContext : DataContext
     {
         static CrudAssignmentContext()
         {

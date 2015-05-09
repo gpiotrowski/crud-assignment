@@ -1,6 +1,12 @@
 using System;
+using CrudAssignment.Entities.Models;
+using CrudAssignment.Service;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
+using Repository.Pattern.DataContext;
+using Repository.Pattern.Ef6;
+using Repository.Pattern.Repositories;
+using Repository.Pattern.UnitOfWork;
 
 namespace CrudAssignment.Web.App_Start
 {
@@ -37,6 +43,11 @@ namespace CrudAssignment.Web.App_Start
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<IUnitOfWorkAsync, UnitOfWork>(new PerRequestLifetimeManager());
+            container.RegisterType<IDataContextAsync, CrudAssignmentContext>(new PerRequestLifetimeManager());
+            container.RegisterType<IProductService, ProductService>(new PerRequestLifetimeManager());
+            container.RegisterType<IRepositoryAsync<Product>, Repository<Product>>(new PerRequestLifetimeManager());
+
         }
     }
 }
