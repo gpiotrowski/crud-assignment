@@ -60,6 +60,10 @@
     <Compile Include="Migrations\201505091728093_ProductRelatedEntitiesFix.Designer.cs">
       <DependentUpon>201505091728093_ProductRelatedEntitiesFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505092005302_AddMinimumStockToProduct.cs" />
+    <Compile Include="Migrations\201505092005302_AddMinimumStockToProduct.Designer.cs">
+      <DependentUpon>201505092005302_AddMinimumStockToProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AspNetRole.cs" />
     <Compile Include="Models\AspNetUser.cs" />
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505091728093_ProductRelatedEntitiesFix.resx">
       <DependentUpon>201505091728093_ProductRelatedEntitiesFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505092005302_AddMinimumStockToProduct.resx">
+      <DependentUpon>201505092005302_AddMinimumStockToProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
