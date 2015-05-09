@@ -12,7 +12,14 @@ namespace CrudAssignment.Service
 {
     public interface IProductService : IService<Product>
     {
+        IEnumerable<Product> GetProductsOrderByName(bool ascending = true);
+        IEnumerable<Product> GetProductsOrderByCategory(bool ascending = true);
+        IEnumerable<Product> GetProductsOrderBySupplier(bool ascenging = true);
+        IEnumerable<Product> GetProductsOrderByPrice(bool ascending = true);
+        IEnumerable<Product> GetProductsOrderByDeliveryPeriod(bool ascending = true);
+        IEnumerable<Product> GetProductsOrderByMinimumStock(bool ascending = true);
     }
+
 
     public class ProductService : Service<Product>, IProductService
     {
