@@ -19,6 +19,13 @@
                 searching: false
             });
         });
+
+        $('#select-all').click(function() {
+            var changeTo = this.checked
+            $("input[name='row-checkbox']").each(function() {
+                this.checked = changeTo;
+            });
+        });
     </script>
 }
 
@@ -30,6 +37,9 @@
 <table id="table_id" class="display dataTable">
     <thead>
         <tr>
+            <th>
+                @Html.CheckBox("select-all", new { id = "select-all" })
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Category.Name)
             </th>
@@ -53,6 +63,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.CheckBox("row-checkbox")
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Category.Name)
                 </td>
