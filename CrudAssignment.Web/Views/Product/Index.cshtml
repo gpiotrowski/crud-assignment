@@ -18,7 +18,8 @@
             $('#table_id').DataTable({
                 paging: false,
                 searching: false,
-                "aoColumnDefs": [{ "bSortable": false, "aTargets": [0] }],
+                info: false,
+                "aoColumnDefs": [{ "bSortable": false, "aTargets": [0, 7] }],
                 order: [[ 3, "asc" ]]
             });
         });
@@ -58,6 +59,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.DeliveryPeriod)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MinimumStock)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -83,6 +87,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DeliveryPeriod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MinimumStock)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
