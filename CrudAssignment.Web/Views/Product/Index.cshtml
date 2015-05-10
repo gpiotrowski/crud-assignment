@@ -33,6 +33,33 @@
                 this.checked = changeTo;
             });
         });
+
+        $('#action-menu').click(function () {
+            var checkedBox = 0;
+            $("input[name='row-checkbox']").each(function () {
+                //type != hidden -> fix for error when all checkbox are checked by select-all checkbox
+                if (this.checked && this.type != "hidden") {
+                    checkedBox++;
+                }
+            });
+            $('.action-add').hide();
+            $('.action-edit').hide();
+            $('.action-delete').hide();
+
+            switch(checkedBox) {
+                case 0:
+                    $('.action-add').show();
+                    break;
+                case 1:
+                    $('.action-edit').show();
+                    $('.action-delete').show();
+                    break;
+                default:
+                    $('.action-delete').show();
+                    break;
+            };
+        });
+
     </script>
 }
 
