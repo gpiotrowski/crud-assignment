@@ -16,14 +16,14 @@
     <script src="/Scripts/custom_jquery.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-        
-        $(document).ready(function () {
+
+        $(document).ready(function() {
             $('#table_id').DataTable({
                 paging: false,
                 searching: false,
                 info: false,
                 "aoColumnDefs": [{ "bSortable": false, "aTargets": [0, 7] }],
-                order: [[ 3, "asc" ]]
+                order: [[3, "asc"]]
             });
         });
 
@@ -34,19 +34,25 @@
             });
         });
 
-        $('#action-menu').click(function () {
-            var checkedBox = 0;
-            $("input[name='row-checkbox']").each(function () {
+        function getSelectedEntriesId() {
+            var selectedEntriesId = [];
+            $("input[name='row-checkbox']").each(function() {
                 //type != hidden -> fix for error when all checkbox are checked by select-all checkbox
                 if (this.checked && this.type != "hidden") {
-                    checkedBox++;
+                    selectedEntriesId.push(this.value);
                 }
             });
+            return selectedEntriesId;
+        }
+
+        $('#action-menu').click(function() {
+            var selectedQty = getSelectedEntriesId().length;
+
             $('.action-add').hide();
             $('.action-edit').hide();
             $('.action-delete').hide();
 
-            switch(checkedBox) {
+            switch (selectedQty) {
                 case 0:
                     $('.action-add').show();
                     break;
@@ -101,7 +107,7 @@
         {
             <tr>
                 <td>
-                    @Html.CheckBox("row-checkbox")
+                    @Html.CheckBox("row-checkbox", new { value = item.Id})
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Category.Name)
