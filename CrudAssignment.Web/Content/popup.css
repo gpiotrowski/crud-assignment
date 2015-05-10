@@ -1,0 +1,54 @@
+﻿//.css from: http://blog.robertmatuszewski.pl/popup-w-jquery/
+
+#wrapper{
+color:#FFFFFF;
+font-family:tahoma;
+font-size:14px;
+margin:200px 0 0 400px;
+}
+ 
+#wrapper a{
+cursor:pointer;
+font-size:17px;
+font-weight:bold;
+text-decoration:underline;
+}
+ 
+.box {
+background-color: #ffffff;
+color: #888888;
+height: 205px;
+left: 100%;
+padding: 20px;
+position: fixed;
+right: 30%;
+top: 25%;
+width: 555px;
+z-index: 101;
+border:5px solid #86BC45;
+border-radius:10px;
+-moz-border-radius:10px;
+}
+ 
+.overlay {
+background: #000000;
+bottom: 0;
+left: 0;
+position: fixed;
+right: 0;
+top: 0;
+z-index: 100;
+opacity:0.5;
+display:none;
+}
+ 
+a.boxclose {
+background: url("/images/table/action_delete.gif") repeat scroll left top transparent;
+cursor: pointer;
+float: right;
+height: 36px;
+left: 42px;
+position: relative;
+top: -39px;
+width: 36px;
+}

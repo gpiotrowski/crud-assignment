@@ -148,5 +148,16 @@ namespace CrudAssignment.Web.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public async Task<ActionResult> ConfirmDelete(string ids)
+        {
+            List<object> response = new List<object>();
+            foreach (var id in ids.Split(','))
+            {
+                var selectedProducts = await _productService.FindAsync(id);
+                response.Add(new {id = selectedProducts.Id, name = selectedProducts.Name});
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
     }
 }

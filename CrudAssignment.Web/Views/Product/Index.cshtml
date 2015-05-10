@@ -7,6 +7,7 @@
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
 <link rel="stylesheet" href="/Content/screen.css" type="text/css" media="screen" title="default">
+<link rel="stylesheet" href="/Content/popup.css" type="text/css" media="screen" title="default">
 @section scripts
 {
     <!-- DataTables -->
@@ -65,6 +66,54 @@
                     break;
             };
         });
+
+        $('#action-delete').click(function () {
+            $.get("Product/ConfirmDelete/", { ids: getSelectedEntriesId().toString()},
+                function (data) {
+                    openDeleteConfirmationDialog(data);
+                }
+            );
+            return false;
+        });
+
+
+        function openDeleteConfirmationDialog(productsToDelete) {
+            //TODO: Scale window minimum height (or add scroll)
+            var productsToDeleteTable = "<table border=1><tr><td>Id</td><td>Name</td></tr>";
+            productsToDelete.forEach(function(product) {
+                productsToDeleteTable += "<tr>";
+                productsToDeleteTable += "<td>" + product.id + "</td>";
+                productsToDeleteTable += "<td>" + product.name + "</td>";
+                productsToDeleteTable += "</tr>";
+            });
+            productsToDeleteTable += "</table>";
+
+            $("#delete-confirm-content-table").html(productsToDeleteTable);
+            $('#overlay').fadeIn('fast', function() {
+                $('#delete-confirm-boxpopup').css('display', 'block');
+                $('#delete-confirm-boxpopup').animate({ 'left': '30%' }, 500);
+            });
+        }
+
+        function openDialog() {
+            $('#overlay').fadeIn('fast', function() {
+                $('#boxpopup').css('display', 'block');
+                $('#boxpopup').animate({ 'left': '30%' }, 500);
+            });
+        }
+
+        function closeDialog(prospectElementID) {
+            $(function($) {
+                $(document).ready(function() {
+                    $('#' + prospectElementID).css('position', 'absolute');
+                    $('#' + prospectElementID).animate({ 'left': '-100%' }, 500, function() {
+                        $('#' + prospectElementID).css('position', 'fixed');
+                        $('#' + prospectElementID).css('left', '100%');
+                        $('#overlay').fadeOut('fast');
+                    });
+                });
+            });
+        }
 
     </script>
 }
@@ -141,9 +190,21 @@
 <div id="actions-box">
     <a href="" id="action-menu" class="action-slider"></a>
     <div id="actions-box-slider">
-        <a href="" class="action-edit">Edit</a>
-        <a href="" class="action-delete">Delete</a>
-        <a href="" class="action-add">Add</a>
+        <a href="" id="action-edit" class="action-edit">Edit</a>
+        <a href="" id="action-delete" class="action-delete">Delete</a>
+        <a href="" id="action-add" class="action-add">Add</a>
     </div>
-    <div class="clear"></div>
+</div>
+
+<div id="wrapper">
+    <div id="overlay" class="overlay"></div>
+    <div id="delete-confirm-boxpopup" class="box">
+        <a onclick=" closeDialog('delete-confirm-boxpopup');" class="boxclose"></a>
+        <div id="delete-confirm-popup-content">
+            <h3>Do you want to delete selected products?</h3>
+            <div id="delete-confirm-content-table"></div>
+            <button>Yes</button>
+            <button>No</button>
+        </div>
+    </div>
 </div>
