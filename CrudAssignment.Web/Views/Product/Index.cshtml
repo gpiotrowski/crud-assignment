@@ -13,10 +13,13 @@
     <script type="text/javascript" charset="utf8" src="/Scripts/jquery.dataTables.min.js"></script>
     
     <script type="text/javascript">
+        
         $(document).ready(function () {
             $('#table_id').DataTable({
                 paging: false,
-                searching: false
+                searching: false,
+                "aoColumnDefs": [{ "bSortable": false, "aTargets": [0] }],
+                order: [[ 3, "asc" ]]
             });
         });
 
