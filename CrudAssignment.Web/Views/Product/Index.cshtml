@@ -17,16 +17,23 @@
     <script src="/Scripts/custom_jquery.js" type="text/javascript"></script>
 
     <script type="text/javascript">
+        var productTable = null;
+
+        var product_table_datatable_order_setting = null;
 
         $(document).ready(function() {
-            $('#table_id').DataTable({
+            createDataTable();
+        });
+
+        function createDataTable() {
+            productTable = $('#product-table').DataTable({
                 paging: false,
                 searching: false,
                 info: false,
                 "aoColumnDefs": [{ "bSortable": false, "aTargets": [0, 7] }],
-                order: [[3, "asc"]]
+                order: (product_table_datatable_order_setting != null ? product_table_datatable_order_setting : [[3, "asc"]])
             });
-        });
+        }
 
         $('#select-all').click(function() {
             var changeTo = this.checked
@@ -76,6 +83,43 @@
             return false;
         });
 
+        //1) Save table order settings and destroy DataTable 2) Remove all elements from product-table-body 3) Load all products to table 4) Create new DataTable
+        function reloadData() {
+            product_table_datatable_order_setting = productTable.order();
+            productTable.destroy();
+            $('#product-table-body').empty();
+            $.getJSON("/Product/GetProducts/",
+                function(data) {
+                    data.forEach(function(product) {
+                        var row = '<tr>';
+                        row += '<td><input id="row-checkbox" name="row-checkbox" value="{0}" type="checkbox"></td>'.format(product.id);
+                        row += '<td>{0}</td>'.format(product.category);
+                        row += '<td>{0}</td>'.format(product.supplier);
+                        row += '<td>{0}</td>'.format(product.name);
+                        row += '<td>{0}</td>'.format(product.price);
+                        row += '<td>{0}</td>'.format(product.deliveryPeriod);
+                        row += '<td>{0}</td>'.format(product.minimumStock);
+                        row += '<td></td>';
+                        row += '</tr>';
+                        $('#product-table-body').append(row);
+                    });
+                    createDataTable();
+                }
+            );
+        }
+
+        function confirmDeleteSelectedProduct() {
+            $.get("/Product/DeleteProducts/", { ids: getSelectedEntriesId().toString() },
+                function(data) {
+                    closeDialog('delete-confirm-boxpopup');
+                    if (data.StatusCode == 200) {
+                        reloadData();
+                    } else {
+                        //ERROR
+                    }
+                }
+            );
+        }
 
         function openDeleteConfirmationDialog(productsToDelete) {
             //TODO: Scale window minimum height (or add scroll)
@@ -110,7 +154,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table id="table_id" class="display dataTable">
+<table id="product-table" class="display dataTable">
     <thead>
         <tr>
             <th>
@@ -138,10 +182,10 @@
         </tr>
     </thead>
     
-    <tbody>
+    <tbody id="product-table-body">
         @foreach (var item in Model)
         {
-            <tr>
+            <tr name="product-table-row">
                 <td>
                     @Html.CheckBox("row-checkbox", new { value = item.Id})
                 </td>
@@ -186,12 +230,12 @@
 <div id="wrapper">
     <div id="overlay" class="overlay"></div>
     <div id="delete-confirm-boxpopup" class="box">
-        <a onclick=" closeDialog('delete-confirm-boxpopup');" class="boxclose"></a>
+        <a onclick="closeDialog('delete-confirm-boxpopup');" class="boxclose"></a>
         <div id="delete-confirm-popup-content">
             <h3>Do you want to delete selected products?</h3>
             <div id="delete-confirm-content-table"></div>
-            <button>Yes</button>
-            <button>No</button>
+            <button onclick="confirmDeleteSelectedProduct();">Yes</button>
+            <button onclick="closeDialog('delete-confirm-boxpopup');">No</button>
         </div>
     </div>
 </div>

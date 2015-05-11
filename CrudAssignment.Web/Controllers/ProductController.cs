@@ -159,5 +159,37 @@ namespace CrudAssignment.Web.Controllers
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+
+        public async Task<ActionResult> DeleteProducts(string ids)
+        {
+            if (ids == null)
+            {
+                return Json(new HttpStatusCodeResult(HttpStatusCode.BadRequest), JsonRequestBehavior.AllowGet);
+            }
+            try
+            {
+                foreach (var id in ids.Split(','))
+                {
+                    _productService.Delete(id);
+                }
+                await _unitOfWork.SaveChangesAsync();
+                return Json(new HttpStatusCodeResult(HttpStatusCode.OK), JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new HttpStatusCodeResult(HttpStatusCode.InternalServerError, ex.ToString()), JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public async Task<ActionResult> GetProducts()
+        {
+            List<object> response = new List<object>();
+            var products = await _productService.Queryable().Include(p => p.Category).Include(p => p.Supplier).ToListAsync();
+            foreach (var product in products)
+            {
+                response.Add(new { id = product.Id, name = product.Name, category = product.Category.Name, price = product.Price, deliveryPeriod = product.DeliveryPeriod, minimumStock = product.MinimumStock, supplier = product.Supplier.Name});
+            }
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
     }
 }
