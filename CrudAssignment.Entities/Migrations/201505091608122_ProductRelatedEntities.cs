@@ -20,7 +20,7 @@ namespace CrudAssignment.Entities.Migrations
                 "dbo.Products",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
+                        Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         DeliveryPeriod = c.Int(nullable: false),
