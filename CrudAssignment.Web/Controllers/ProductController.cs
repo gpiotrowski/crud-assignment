@@ -33,8 +33,7 @@ namespace CrudAssignment.Web.Controllers
         // GET: Product
         public async Task<ActionResult> Index()
         {
-            var products = _productService.Queryable().Include(p => p.Category).Include(p => p.Supplier);
-            return View(await products.ToListAsync());
+            return View();
         }
 
         // GET: Product/Details/5
