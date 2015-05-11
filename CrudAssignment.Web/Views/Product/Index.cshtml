@@ -75,11 +75,8 @@
         });
 
         $('#action-delete').click(function() {
-            $.get("/Product/ConfirmDelete/", { ids: getSelectedEntriesId().toString() },
-                function(data) {
-                    openDeleteConfirmationDialog(data);
-                }
-            );
+            var ids = getSelectedEntriesId();
+            confirmDeleteSelectedProduct(ids);
             return false;
         });
 
@@ -110,17 +107,35 @@
             );
         }
 
-        function confirmDeleteSelectedProduct() {
-            $.get("/Product/DeleteProducts/", { ids: getSelectedEntriesId().toString() },
+        function confirmDeleteSelectedProduct(ids) {
+            $.get("/Product/ConfirmDelete/", { ids: ids.toString() },
+                function (data) {
+                    openDeleteConfirmationDialog(data);
+                }
+            );
+        }
+
+        function deleteSelectedProduct(ids) {
+            $.get("/Product/DeleteProducts/", { ids: ids.toString() },
                 function(data) {
                     closeDialog('delete-confirm-boxpopup');
                     if (data.StatusCode == 200) {
                         reloadData();
                     } else {
-                        //ERROR
+                        showErrorDialog(ids);
                     }
                 }
             );
+        }
+
+        function showErrorDialog(idsToDelete) {
+            $('#message-red').fadeIn('slow');
+            $('#error-try-again').off('click');
+            $('#error-try-again').click(function () {
+                $('#message-red').fadeOut('slow');
+                confirmDeleteSelectedProduct(idsToDelete);
+                return false;
+            });
         }
 
         function openDeleteConfirmationDialog(productsToDelete) {
@@ -156,57 +171,70 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table id="product-table" class="display dataTable">
-    <thead>
-        <tr>
-            <th>
-                @Html.CheckBox("select-all", new { id = "select-all" })
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Supplier.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeliveryPeriod)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MinimumStock)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    
-    <tbody id="product-table-body">
-    </tbody>
-
-</table>
-
-<div id="actions-box">
-    <a href="" id="action-menu" class="action-slider"></a>
-    <div id="actions-box-slider">
-        <a href="" id="action-edit" class="action-edit">Edit</a>
-        <a href="" id="action-delete" class="action-delete">Delete</a>
-        @Html.ActionLink("Add", "Create", null, new { id = "action-add", @class = "action-add"})
+<div id="table-content">
+    <!--  start message-red -->
+    <div id="message-red" style="display: none">
+        <table border="0" width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="red-left">Error. <a id="error-try-again" href="">Please try again.</a></td>
+                <td class="red-right"><a class="close-red"><img src="/images/table/icon_close_red.gif" alt="" /></a></td>
+            </tr>
+        </table>
     </div>
+    <!--  end message-red -->
+
+    <table id="product-table" class="display dataTable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.CheckBox("select-all", new { id = "select-all" })
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Supplier.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeliveryPeriod)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MinimumStock)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody id="product-table-body"></tbody>
+
+    </table>
 </div>
 
-<div id="wrapper">
-    <div id="overlay" class="overlay"></div>
-    <div id="delete-confirm-boxpopup" class="box">
-        <a onclick="closeDialog('delete-confirm-boxpopup');" class="boxclose"></a>
-        <div id="delete-confirm-popup-content">
-            <h3>Do you want to delete selected products?</h3>
-            <div id="delete-confirm-content-table"></div>
-            <button onclick="confirmDeleteSelectedProduct();">Yes</button>
-            <button onclick="closeDialog('delete-confirm-boxpopup');">No</button>
+    <div id="actions-box">
+        <a href="" id="action-menu" class="action-slider"></a>
+        <div id="actions-box-slider">
+            <a href="" id="action-edit" class="action-edit">Edit</a>
+            <a href="" id="action-delete" class="action-delete">Delete</a>
+            @Html.ActionLink("Add", "Create", null, new { id = "action-add", @class = "action-add" })
         </div>
     </div>
-</div>
+
+    <div id="wrapper">
+        <div id="overlay" class="overlay"></div>
+        <div id="delete-confirm-boxpopup" class="box">
+            <a onclick="closeDialog('delete-confirm-boxpopup');" class="boxclose"></a>
+            <div id="delete-confirm-popup-content">
+                <h3>Do you want to delete selected products?</h3>
+                <div id="delete-confirm-content-table"></div>
+                @*TODO: pass ids exacly the same as before*@
+                <button onclick=" deleteSelectedProduct(getSelectedEntriesId());">Yes</button>
+                <button onclick="closeDialog('delete-confirm-boxpopup');">No</button>
+            </div>
+        </div>
+    </div>
