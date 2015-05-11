@@ -194,7 +194,7 @@
     <div id="actions-box-slider">
         <a href="" id="action-edit" class="action-edit">Edit</a>
         <a href="" id="action-delete" class="action-delete">Delete</a>
-        <a href="" id="action-add" class="action-add">Add</a>
+        @Html.ActionLink("Add", "Create", null, new { id = "action-add", @class = "action-add"})
     </div>
 </div>
 
