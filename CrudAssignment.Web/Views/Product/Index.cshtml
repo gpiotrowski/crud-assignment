@@ -67,9 +67,9 @@
             };
         });
 
-        $('#action-delete').click(function () {
-            $.get("Product/ConfirmDelete/", { ids: getSelectedEntriesId().toString()},
-                function (data) {
+        $('#action-delete').click(function() {
+            $.get("/Product/ConfirmDelete/", { ids: getSelectedEntriesId().toString() },
+                function(data) {
                     openDeleteConfirmationDialog(data);
                 }
             );
@@ -89,30 +89,17 @@
             productsToDeleteTable += "</table>";
 
             $("#delete-confirm-content-table").html(productsToDeleteTable);
-            $('#overlay').fadeIn('fast', function() {
-                $('#delete-confirm-boxpopup').css('display', 'block');
-                $('#delete-confirm-boxpopup').animate({ 'left': '30%' }, 500);
-            });
+            openDialog('delete-confirm-boxpopup');
         }
 
-        function openDialog() {
-            $('#overlay').fadeIn('fast', function() {
-                $('#boxpopup').css('display', 'block');
-                $('#boxpopup').animate({ 'left': '30%' }, 500);
-            });
+        function openDialog(prospectElementID) {
+            $('#overlay').fadeIn('slow');
+            $('#' + prospectElementID).fadeIn('slow');
         }
 
         function closeDialog(prospectElementID) {
-            $(function($) {
-                $(document).ready(function() {
-                    $('#' + prospectElementID).css('position', 'absolute');
-                    $('#' + prospectElementID).animate({ 'left': '-100%' }, 500, function() {
-                        $('#' + prospectElementID).css('position', 'fixed');
-                        $('#' + prospectElementID).css('left', '100%');
-                        $('#overlay').fadeOut('fast');
-                    });
-                });
-            });
+            $('#overlay').fadeOut('slow');
+            $('#' + prospectElementID).fadeOut('slow');
         }
 
     </script>

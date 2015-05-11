@@ -18,7 +18,7 @@ text-decoration:underline;
 background-color: #ffffff;
 color: #888888;
 height: 205px;
-left: 100%;
+left: 30%;
 padding: 20px;
 position: fixed;
 right: 30%;
@@ -27,6 +27,7 @@ width: 555px;
 z-index: 101;
 border:5px solid #86BC45;
 border-radius:10px;
+display: none;
 -moz-border-radius:10px;
 }
  
