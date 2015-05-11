@@ -109,8 +109,12 @@
 
         function confirmDeleteSelectedProduct(ids) {
             $.get("/Product/ConfirmDelete/", { ids: ids.toString() },
-                function (data) {
-                    openDeleteConfirmationDialog(data);
+                function(data) {
+                    if (data.StatusCode != null && data.StatusCode == 400) {
+                        showErrorDialog(ids);
+                    } else {
+                        openDeleteConfirmationDialog(data);
+                    }
                 }
             );
         }
@@ -131,7 +135,7 @@
         function showErrorDialog(idsToDelete) {
             $('#message-red').fadeIn('slow');
             $('#error-try-again').off('click');
-            $('#error-try-again').click(function () {
+            $('#error-try-again').click(function() {
                 $('#message-red').fadeOut('slow');
                 confirmDeleteSelectedProduct(idsToDelete);
                 return false;

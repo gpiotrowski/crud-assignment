@@ -150,11 +150,18 @@ namespace CrudAssignment.Web.Controllers
 
         public async Task<ActionResult> ConfirmDelete(string ids)
         {
-            List<object> response = new List<object>();
-            foreach (var id in ids.Split(','))
+            var response = new List<object>();
+            try
             {
-                var selectedProducts = await _productService.FindAsync(id);
-                response.Add(new {id = selectedProducts.Id, name = selectedProducts.Name});
+                foreach (var id in ids.Split(','))
+                {
+                    var selectedProducts = await _productService.FindAsync(id);
+                    response.Add(new { id = selectedProducts.Id, name = selectedProducts.Name });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new HttpStatusCodeResult(HttpStatusCode.BadRequest), JsonRequestBehavior.AllowGet);
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
