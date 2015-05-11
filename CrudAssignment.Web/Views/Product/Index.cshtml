@@ -19,7 +19,7 @@
     <script type="text/javascript">
         var productTable = null;
 
-        var product_table_datatable_order_setting = null;
+        var productTableDatatableOrderSetting = null;
 
         $(document).ready(function() {
             reloadData();
@@ -31,7 +31,7 @@
                 searching: false,
                 info: false,
                 "aoColumnDefs": [{ "bSortable": false, "aTargets": [0, 7] }],
-                order: (product_table_datatable_order_setting != null ? product_table_datatable_order_setting : [[3, "asc"]])
+                order: (productTableDatatableOrderSetting != null ? productTableDatatableOrderSetting : [[3, "asc"]])
             });
         }
 
@@ -83,7 +83,7 @@
         //1) Save table order settings and destroy DataTable 2) Remove all elements from product-table-body 3) Load all products to table 4) Create new DataTable
         function reloadData() {
             if (productTable != null) {
-                product_table_datatable_order_setting = productTable.order();
+                productTableDatatableOrderSetting = productTable.order();
                 productTable.destroy();
             }
             $('#product-table-body').empty();
