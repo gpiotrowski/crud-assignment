@@ -105,7 +105,7 @@
             $.get("/Product/ConfirmDelete/", { ids: ids.toString() },
                 function(data) {
                     if (data.StatusCode != null && data.StatusCode == 400) {
-                        showErrorDialog(ids);
+                        showErrorDialog(ids, "delete");
                     } else {
                         openDeleteConfirmationDialog(data);
                     }
@@ -120,19 +120,25 @@
                     if (data.StatusCode == 200) {
                         reloadData();
                     } else {
-                        showErrorDialog(ids);
+                        showErrorDialog(ids, "delete");
                     }
                 }
             );
         }
 
-        function showErrorDialog(idsToDelete) {
+        function showErrorDialog(ids, action) {
             $('#message-red').fadeIn('slow');
             $('#error-try-again').off('click');
             $('#error-try-again').click(function() {
                 $('#message-red').fadeOut('slow');
-                confirmDeleteSelectedProduct(idsToDelete);
-                return false;
+                switch(action) {
+                    case "delete":
+                        confirmDeleteSelectedProduct(ids);
+                        break;
+                    case "edit":
+                        editSelectedProduct(ids);
+                        break;
+                }
             });
         }
 
