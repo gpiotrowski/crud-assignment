@@ -92,13 +92,22 @@
                         row += '<td>{0}</td>'.format(product.price);
                         row += '<td>{0}</td>'.format(product.deliveryPeriod);
                         row += '<td>{0}</td>'.format(product.minimumStock);
-                        row += '<td><button title="Edit" class="icon-1 info-tooltip" data.id="{0}" ></button><button title="Delete" class="icon-2 info-tooltip" data.id="{0}" onclick="confirmDeleteSelectedProduct({0})"></button></td>'.format(product.id);
+                        row += '<td><button title="Edit" class="icon-1 info-tooltip" onclick="editSelectedProduct({0})"></button><button title="Delete" class="icon-2 info-tooltip" onclick="confirmDeleteSelectedProduct({0})"></button></td>'.format(product.id);
                         row += '</tr>';
                         $('#product-table-body').append(row);
                     });
                     createDataTable();
                 }
             );
+        }
+
+        function editSelectedProduct(id) {
+            if (id != null && id == parseInt(id)) {
+                var url = "@Url.Action("Edit", "Product", new { id = "__id__"})".replace("__id__", id);
+                window.location.href = url;
+            } else {
+                showErrorDialog(id, "edit");
+            }
         }
 
         function confirmDeleteSelectedProduct(ids) {
@@ -222,7 +231,7 @@
     <div id="actions-box">
         <a href="" id="action-menu" class="action-slider"></a>
         <div id="actions-box-slider">
-            <button id="action-edit" class="action-edit">Edit</button>
+            <button id="action-edit" class="action-edit" onclick="editSelectedProduct(getSelectedEntriesId())">Edit</button>
             <button id="action-delete" class="action-delete" onclick="confirmDeleteSelectedProduct(getSelectedEntriesId())">Delete</button>
             @Html.ActionLink("Add", "Create", null, new { id = "action-add", @class = "action-add" })
         </div>
