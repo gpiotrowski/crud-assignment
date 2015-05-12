@@ -64,3 +64,20 @@ a:hover.action-delete	{
 	background: #949494 url(../images/table/action_delete.gif) no-repeat 14px 5px;
 	color: #fff;
 	}
+
+/*  ERRORS ----------------------------------------------- */	
+.error-inner {
+	float:left;
+	padding: 7px 10px 0 4px;
+	color:#fff; 
+	line-height: 14px;
+	height:25px;
+	background: url(../images/forms/error_right.gif) right  no-repeat;
+}
+.error-left {
+	float:left;
+	width:13px;
+	height:32px;
+	margin-left: 5px;
+	background: url(../images/forms/error_left.gif) no-repeat;
+}
