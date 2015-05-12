@@ -81,7 +81,7 @@
                 productTable.destroy();
             }
             $('#product-table-body').empty();
-            $.getJSON("/Product/GetProducts/",
+            $.getJSON("@Url.Action("GetProducts", "Product")",
                 function(data) {
                     data.forEach(function(product) {
                         var row = '<tr>';
@@ -111,7 +111,7 @@
         }
 
         function confirmDeleteSelectedProduct(ids) {
-            $.get("/Product/ConfirmDelete/", { ids: ids.toString() },
+            $.get("@Url.Action("ConfirmDelete", "Product")", { ids: ids.toString() },
                 function(data) {
                     if (data.StatusCode != null && data.StatusCode == 400) {
                         showErrorDialog(ids, "delete");
@@ -123,7 +123,7 @@
         }
 
         function deleteSelectedProduct(ids) {
-            $.get("/Product/DeleteProducts/", { ids: ids.toString() },
+            $.get("@Url.Action("DeleteProducts", "Product")", { ids: ids.toString() },
                 function(data) {
                     closeDialog('delete-confirm-boxpopup');
                     if (data.StatusCode == 200) {
@@ -171,9 +171,9 @@
             $('#' + prospectElementId).fadeIn('slow');
         }
 
-        function closeDialog(prospectElementId) {
+        function closeDialog(prospectElementID) {
             $('#overlay').fadeOut('slow');
-            $('#' + prospectElementId).fadeOut('slow');
+            $('#' + prospectElementID).fadeOut('slow');
         }
     </script>
 }
