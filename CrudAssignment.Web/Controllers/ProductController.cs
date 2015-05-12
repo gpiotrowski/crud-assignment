@@ -37,7 +37,7 @@ namespace CrudAssignment.Web.Controllers
         }
 
         // GET: Product/Details/5
-        public async Task<ActionResult> Details(string id)
+        public async Task<ActionResult> Details(int id)
         {
             if (id == null)
             {
@@ -79,7 +79,7 @@ namespace CrudAssignment.Web.Controllers
         }
 
         // GET: Product/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(int id)
         {
             if (id == null)
             {
@@ -115,7 +115,7 @@ namespace CrudAssignment.Web.Controllers
         }
 
         // GET: Product/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int id)
         {
             if (id == null)
             {
