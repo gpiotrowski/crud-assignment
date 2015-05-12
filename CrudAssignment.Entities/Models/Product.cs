@@ -13,12 +13,18 @@ namespace CrudAssignment.Entities.Models
     public class Product : Entity
     {
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public decimal Price { get; set; }
+        [Required]
         public int DeliveryPeriod { get; set; }
+        [Required]
         public int MinimumStock { get; set; }
+        [Required]
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
+        [Required]
         public int SupplierId { get; set; }
         public virtual Supplier Supplier { get; set; }
     }
