@@ -32,9 +32,9 @@ a.action-slider.activated	{
 	margin: 0 auto;
 	width: 108px;
 	}
-a.action-add ,
-a.action-edit ,
-a.action-delete	{
+button.action-add ,
+button.action-edit ,
+button.action-delete	{
 	color: #272727;
 	display: block;
 	font-weight: bold;
@@ -42,27 +42,58 @@ a.action-delete	{
 	margin: 0 auto;
 	padding: 10px 0 5px 45px;
 	width: 63px;
+    border: 0;
 	}
-a:hover.action-add	{
+button:hover.action-add	{
 	background: #949494 url(../images/table/action_add.gif) no-repeat 14px 5px;
 	color: #fff;
+    border: 0;
 	}
-a.action-add	{
+button.action-add	{
 	background: #c7c7c7 url(../images/table/action_add.gif) no-repeat 14px 5px;
+    border: 1;
 	}
-a:hover.action-edit	{
+button:hover.action-edit	{
 	background: #949494 url(../images/table/action_edit.gif) no-repeat 14px 5px;
-	color: #fff;
+    border: 0;
 	}
-a.action-edit	{
+button.action-edit	{
 	background: #c7c7c7 url(../images/table/action_edit.gif) no-repeat 14px 5px;
+    border: 0;
 	}
-a.action-delete	{
+button.action-delete	{
 	background: #c7c7c7 url(../images/table/action_delete.gif) no-repeat 14px 5px;
+    border: 0;
 	}
-a:hover.action-delete	{
+button:hover.action-delete	{
 	background: #949494 url(../images/table/action_delete.gif) no-repeat 14px 5px;
 	color: #fff;
+    border: 0;
+	}
+
+button.icon-1	{
+	background: url(../images/table/table_icon_1.gif) no-repeat;
+	display: block;
+	float: left;
+	height: 24px;
+	margin: 0 8px 0 0;
+	width: 24px;
+    border: 0;
+	}
+button:hover.icon-1	{
+	background: url(../images/table/table_icon_1.gif) 0 -24px;
+	}
+button.icon-2	{
+	background: url(../images/table/table_icon_2.gif) no-repeat;
+	display: block;
+	float: left;
+	height: 24px;
+	margin: 0 8px 0 0;
+	width: 24px;
+    border: 0;
+	}
+button:hover.icon-2	{
+	background: url(../images/table/table_icon_2.gif) 0 -24px;
 	}
 
 /*  ERRORS ----------------------------------------------- */	

@@ -74,12 +74,6 @@
             };
         });
 
-        $('#action-delete').click(function() {
-            var ids = getSelectedEntriesId();
-            confirmDeleteSelectedProduct(ids);
-            return false;
-        });
-
         //1) Save table order settings and destroy DataTable 2) Remove all elements from product-table-body 3) Load all products to table 4) Create new DataTable
         function reloadData() {
             if (productTable != null) {
@@ -223,8 +217,8 @@
     <div id="actions-box">
         <a href="" id="action-menu" class="action-slider"></a>
         <div id="actions-box-slider">
-            <a href="" id="action-edit" class="action-edit">Edit</a>
-            <a href="" id="action-delete" class="action-delete">Delete</a>
+            <button id="action-edit" class="action-edit">Edit</button>
+            <button id="action-delete" class="action-delete" onclick="confirmDeleteSelectedProduct(getSelectedEntriesId())">Delete</button>
             @Html.ActionLink("Add", "Create", null, new { id = "action-add", @class = "action-add" })
         </div>
     </div>
@@ -237,7 +231,7 @@
                 <h3>Do you want to delete selected products?</h3>
                 <div id="delete-confirm-content-table"></div>
                 @*TODO: pass ids exacly the same as before*@
-                <button onclick=" deleteSelectedProduct(getSelectedEntriesId());">Yes</button>
+                <button onclick="deleteSelectedProduct(getSelectedEntriesId());">Yes</button>
                 <button onclick="closeDialog('delete-confirm-boxpopup');">No</button>
             </div>
         </div>
