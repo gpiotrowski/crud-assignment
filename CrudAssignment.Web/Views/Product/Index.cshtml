@@ -92,7 +92,7 @@
                         row += '<td>{0}</td>'.format(product.price);
                         row += '<td>{0}</td>'.format(product.deliveryPeriod);
                         row += '<td>{0}</td>'.format(product.minimumStock);
-                        row += '<td></td>';
+                        row += '<td><button title="Edit" class="icon-1 info-tooltip" data.id="{0}" ></button><button title="Delete" class="icon-2 info-tooltip" data.id="{0}" onclick="confirmDeleteSelectedProduct({0})"></button></td>'.format(product.id);
                         row += '</tr>';
                         $('#product-table-body').append(row);
                     });
@@ -160,7 +160,6 @@
             $('#overlay').fadeOut('slow');
             $('#' + prospectElementID).fadeOut('slow');
         }
-
     </script>
 }
 
