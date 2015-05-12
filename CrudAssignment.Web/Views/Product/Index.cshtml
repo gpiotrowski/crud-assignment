@@ -36,7 +36,7 @@
         }
 
         $('#select-all').click(function() {
-            var changeTo = this.checked
+            var changeTo = this.checked;
             $("input[name='row-checkbox']").each(function() {
                 this.checked = changeTo;
             });
@@ -166,14 +166,14 @@
             openDialog('delete-confirm-boxpopup');
         }
 
-        function openDialog(prospectElementID) {
+        function openDialog(prospectElementId) {
             $('#overlay').fadeIn('slow');
-            $('#' + prospectElementID).fadeIn('slow');
+            $('#' + prospectElementId).fadeIn('slow');
         }
 
-        function closeDialog(prospectElementID) {
+        function closeDialog(prospectElementId) {
             $('#overlay').fadeOut('slow');
-            $('#' + prospectElementID).fadeOut('slow');
+            $('#' + prospectElementId).fadeOut('slow');
         }
     </script>
 }

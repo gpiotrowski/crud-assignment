@@ -32,7 +32,7 @@ a.action-slider.activated	{
 	margin: 0 auto;
 	width: 108px;
 	}
-button.action-add ,
+a.action-add ,
 button.action-edit ,
 button.action-delete	{
 	color: #272727;
@@ -49,7 +49,7 @@ button:hover.action-add	{
 	color: #fff;
     border: 0;
 	}
-button.action-add	{
+a.action-add	{
 	background: #c7c7c7 url(../images/table/action_add.gif) no-repeat 14px 5px;
     border: 1;
 	}
@@ -112,3 +112,4 @@ button:hover.icon-2	{
 	margin-left: 5px;
 	background: url(../images/forms/error_left.gif) no-repeat;
 }
+.red-left	{	background: url(../images/table/message_red.gif) top left no-repeat;	color: #ce2700;	font-family: Tahoma;	font-weight: bold;	padding: 0 0 0 20px;	}.red-left a	{	color: #ce2700;	font-family: Tahoma;	font-weight: normal;	text-decoration: underline;	}.red-right a	{	cursor: pointer;	}.red-right	{	width: 55px;	}
