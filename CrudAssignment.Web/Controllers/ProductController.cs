@@ -155,7 +155,7 @@ namespace CrudAssignment.Web.Controllers
             {
                 foreach (var id in ids.Split(','))
                 {
-                    var selectedProducts = await _productService.FindAsync(id);
+                    var selectedProducts = await _productService.FindAsync(Convert.ToInt32(id));
                     response.Add(new { id = selectedProducts.Id, name = selectedProducts.Name });
                 }
             }
@@ -176,7 +176,7 @@ namespace CrudAssignment.Web.Controllers
             {
                 foreach (var id in ids.Split(','))
                 {
-                    _productService.Delete(id);
+                    _productService.Delete(Convert.ToInt32(id));
                 }
                 await _unitOfWork.SaveChangesAsync();
                 return Json(new HttpStatusCodeResult(HttpStatusCode.OK), JsonRequestBehavior.AllowGet);
