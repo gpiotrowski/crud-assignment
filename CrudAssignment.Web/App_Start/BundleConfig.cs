@@ -27,6 +27,10 @@ namespace CrudAssignment.Web
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/helpers").Include(
+                    "~/Scripts/helpers.js",
+                    "~/Scripts/displayHelpers.js"));
         }
     }
 }

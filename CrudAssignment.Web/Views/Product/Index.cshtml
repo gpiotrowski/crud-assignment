@@ -89,8 +89,8 @@
                         row += '<td>{0}</td>'.format(product.category);
                         row += '<td>{0}</td>'.format(product.supplier);
                         row += '<td>{0}</td>'.format(product.name);
-                        row += '<td>{0}</td>'.format(product.price);
-                        row += '<td>{0}</td>'.format(product.deliveryPeriod);
+                        row += '<td>{0}</td>'.format(displayMoney(product.price));
+                        row += '<td>{0}</td>'.format(displayDays(product.deliveryPeriod));
                         row += '<td>{0}</td>'.format(product.minimumStock);
                         row += '<td><button title="Edit" class="icon-1 info-tooltip" onclick="editSelectedProduct({0})"></button><button title="Delete" class="icon-2 info-tooltip" onclick="confirmDeleteSelectedProduct({0})"></button></td>'.format(product.id);
                         row += '</tr>';
