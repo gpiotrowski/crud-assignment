@@ -5,19 +5,19 @@
 	position: relative;
 	}
 a.action-slider	{
-	background: url(../images/table/dropdown_actions.gif) no-repeat;
+	background: url(/Content/images/table/dropdown_actions.gif) no-repeat;
 	display: block;
 	height: 30px;
 	width: 110px;
 	}
 a.action-slider.activated	{
-	background: url(../images/table/dropdown_actions.gif) no-repeat 0 -30px;
+	background: url(/Content/images/table/dropdown_actions.gif) no-repeat 0 -30px;
 	display: block;
 	height: 30px;
 	width: 110px;
 	}
 #actions-box-slider	{
-	background: url(../images/table/actions_slider_bg.gif) bottom no-repeat;
+	background: url(/Content/images/table/actions_slider_bg.gif) bottom no-repeat;
 	display: none;
 	left: 0;
 	padding-bottom: 1px;
@@ -45,34 +45,34 @@ button.action-delete	{
     border: 0;
 	}
 button:hover.action-add	{
-	background: #949494 url(../images/table/action_add.gif) no-repeat 14px 5px;
+	background: #949494 url(/Content/images/table/action_add.gif) no-repeat 14px 5px;
 	color: #fff;
     border: 0;
 	}
 a.action-add	{
-	background: #c7c7c7 url(../images/table/action_add.gif) no-repeat 14px 5px;
+	background: #c7c7c7 url(/Content/images/table/action_add.gif) no-repeat 14px 5px;
     border: 1;
 	}
 button:hover.action-edit	{
-	background: #949494 url(../images/table/action_edit.gif) no-repeat 14px 5px;
+	background: #949494 url(/Content/images/table/action_edit.gif) no-repeat 14px 5px;
     border: 0;
 	}
 button.action-edit	{
-	background: #c7c7c7 url(../images/table/action_edit.gif) no-repeat 14px 5px;
+	background: #c7c7c7 url(/Content/images/table/action_edit.gif) no-repeat 14px 5px;
     border: 0;
 	}
 button.action-delete	{
-	background: #c7c7c7 url(../images/table/action_delete.gif) no-repeat 14px 5px;
+	background: #c7c7c7 url(/Content/images/table/action_delete.gif) no-repeat 14px 5px;
     border: 0;
 	}
 button:hover.action-delete	{
-	background: #949494 url(../images/table/action_delete.gif) no-repeat 14px 5px;
+	background: #949494 url(/Content/images/table/action_delete.gif) no-repeat 14px 5px;
 	color: #fff;
     border: 0;
 	}
 
 button.icon-1	{
-	background: url(../images/table/table_icon_1.gif) no-repeat;
+	background: url(/Content/images/table/table_icon_1.gif) no-repeat;
 	display: block;
 	float: left;
 	height: 24px;
@@ -81,10 +81,10 @@ button.icon-1	{
     border: 0;
 	}
 button:hover.icon-1	{
-	background: url(../images/table/table_icon_1.gif) 0 -24px;
+	background: url(/Content/images/table/table_icon_1.gif) 0 -24px;
 	}
 button.icon-2	{
-	background: url(../images/table/table_icon_2.gif) no-repeat;
+	background: url(/Content/images/table/table_icon_2.gif) no-repeat;
 	display: block;
 	float: left;
 	height: 24px;
@@ -93,7 +93,7 @@ button.icon-2	{
     border: 0;
 	}
 button:hover.icon-2	{
-	background: url(../images/table/table_icon_2.gif) 0 -24px;
+	background: url(/Content/images/table/table_icon_2.gif) 0 -24px;
 	}
 
 /*  ERRORS ----------------------------------------------- */	
@@ -103,17 +103,17 @@ button:hover.icon-2	{
 	color:#fff; 
 	line-height: 14px;
 	height:25px;
-	background: url(../images/forms/error_right.gif) right  no-repeat;
+	background: url(/Content/images/forms/error_right.gif) right  no-repeat;
 }
 .error-left {
 	float:left;
 	width:13px;
 	height:32px;
 	margin-left: 5px;
-	background: url(../images/forms/error_left.gif) no-repeat;
+	background: url(/Content/images/forms/error_left.gif) no-repeat;
 }
 .red-left	{
-	background: url(../images/table/message_red.gif) top left no-repeat;
+	background: url(/Content/images/table/message_red.gif) top left no-repeat;
 	color: #ce2700;
 	font-family: Tahoma;
 	font-weight: bold;
@@ -135,7 +135,7 @@ button:hover.icon-2	{
 	margin-bottom: 5px;
 	}
 .green-left	{
-	background: url(../images/table/message_green.gif) top left no-repeat;
+	background: url(/Content/images/table/message_green.gif) top left no-repeat;
 	color: #6da827;
 	font-family: Tahoma;
 	font-weight: bold;

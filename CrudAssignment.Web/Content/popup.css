@@ -44,7 +44,7 @@ display:none;
 }
  
 a.boxclose {
-background: url("/images/table/action_delete.gif") repeat scroll left top transparent;
+background: url("/Content/images/table/action_delete.gif") repeat scroll left top transparent;
 cursor: pointer;
 float: right;
 height: 36px;
