@@ -193,6 +193,20 @@
         </table>
     </div>
     <!--  end message-red -->
+    <!--  start message-green -->
+    @if (@Convert.ToBoolean(@TempData["AddedSuccessfully"]))
+    {
+        <div id="message-green">
+            <table border="0" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td class="green-left">Product added sucessfully. <a href="@Url.Action("Create", "Product")">Add new one.</a></td>
+                    <td class="green-right"><a class="close-green"><img src="/images/table/icon_close_green.gif" alt="" /></a></td>
+                </tr>
+            </table>
+        </div>
+    }
+    <!-- end message-green -->
+
 
     <table id="product-table" class="display dataTable">
         <thead>

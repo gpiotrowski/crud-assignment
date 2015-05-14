@@ -112,4 +112,45 @@ button:hover.icon-2	{
 	margin-left: 5px;
 	background: url(../images/forms/error_left.gif) no-repeat;
 }
-.red-left	{	background: url(../images/table/message_red.gif) top left no-repeat;	color: #ce2700;	font-family: Tahoma;	font-weight: bold;	padding: 0 0 0 20px;	}.red-left a	{	color: #ce2700;	font-family: Tahoma;	font-weight: normal;	text-decoration: underline;	}.red-right a	{	cursor: pointer;	}.red-right	{	width: 55px;	}
+.red-left	{
+	background: url(../images/table/message_red.gif) top left no-repeat;
+	color: #ce2700;
+	font-family: Tahoma;
+	font-weight: bold;
+	padding: 0 0 0 20px;
+	}
+.red-left a	{
+	color: #ce2700;
+	font-family: Tahoma;
+	font-weight: normal;
+	text-decoration: underline;
+	}
+.red-right a	{
+	cursor: pointer;
+	}
+.red-right	{
+	width: 55px;
+	}
+#message-green	{
+	margin-bottom: 5px;
+	}
+.green-left	{
+	background: url(../images/table/message_green.gif) top left no-repeat;
+	color: #6da827;
+	font-family: Tahoma;
+	font-weight: bold;
+	line-height: 12px;
+	padding: 0 0 0 20px;
+	}
+.green-left a	{
+	color: #6da827;
+	font-family: Tahoma;
+	font-weight: normal;
+	text-decoration: underline;
+	}
+.green-right a	{
+	cursor: pointer;
+	}
+.green-right	{
+	width: 55px;
+	}

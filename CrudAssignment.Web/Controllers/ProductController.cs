@@ -70,6 +70,7 @@ namespace CrudAssignment.Web.Controllers
             {
                 _productService.Insert(product);
                 await _unitOfWork.SaveChangesAsync();
+                TempData.Add("AddedSuccessfully", true);
                 return RedirectToAction("Index");
             }
 
