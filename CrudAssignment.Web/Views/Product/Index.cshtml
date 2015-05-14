@@ -8,9 +8,27 @@
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
 <link rel="stylesheet" href="/Content/screen.css" type="text/css" media="screen" title="default">
 <link rel="stylesheet" href="/Content/popup.css" type="text/css" media="screen" title="default">
+<link rel="stylesheet" href="/Content/jquery-ui.min.css" type="text/css"/>
 @section scripts
 {
     @Scripts.Render("~/bundles/datatables")
+
+    <!-- Tooltips -->
+    <script src="/Scripts/jquery-ui.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(document).tooltip({
+                    track: true,
+                    delay: 0,
+                    fixPNG: true,
+                    showURL: false,
+                    showBody: " - ",
+                    position: { my: "left+5 bottom-10", at: "left bottom" }
+            });
+        });
+    </script>
+
 
     <!-- Custom jquery scripts -->
     <script src="/Scripts/custom_jquery.js" type="text/javascript"></script>
