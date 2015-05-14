@@ -10,9 +10,7 @@
 <link rel="stylesheet" href="/Content/popup.css" type="text/css" media="screen" title="default">
 @section scripts
 {
-    <!-- DataTables -->
-    <script type="text/javascript" charset="utf8" src="/Scripts/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="/Scripts/jquery.dataTables.customSorting.js"></script>
+    @Scripts.Render("~/bundles/datatables")
 
     <!-- Custom jquery scripts -->
     <script src="/Scripts/custom_jquery.js" type="text/javascript"></script>

@@ -31,6 +31,11 @@ namespace CrudAssignment.Web
             bundles.Add(new ScriptBundle("~/bundles/helpers").Include(
                     "~/Scripts/helpers.js",
                     "~/Scripts/displayHelpers.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
+                    "~/Scripts/jquery.dataTables.min.js",
+                    "~/Scripts/jquery.dataTables.customSorting.js"
+                ));
         }
     }
 }
