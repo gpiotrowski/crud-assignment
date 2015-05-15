@@ -300,3 +300,27 @@ h3	{
 #product-table .sorting_1 {
     background: inherit;
 }
+
+
+.form-submit	{
+	background: url(/Content/images/forms/form_submit.gif) no-repeat;
+	border: none;
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 30px;
+	margin: 0 4px 0 0;
+	padding: 0;
+	text-indent: -3000px;
+	width: 80px;
+	}
+.form-reset	{
+	background: url(/Content/images/forms/form_reset.gif) no-repeat;
+	border: none;
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 30px;
+	text-indent: -3000px;
+	width: 80px;
+}
