@@ -203,6 +203,100 @@ button:hover.icon-2 {
     margin-bottom: 0;
 }
 
-.clear	{	clear: both;	font-size: 0px;	height: 0;	line-height: 0px;	margin: 0px;	padding: 0px;}.nav	{	float: left;	font-family: Tahoma;	font-size: 13px;	height: 38px;	position: relative;	width: 600px;	min-width: 600px;	z-index: 500;	}.nav-outer	{	margin: 0 auto;	max-width: 1260px;	min-width: 850px;	}#nav-right	{	float: right;	position: relative;	width: 225px;	z-index: 0;	}#nav-right a	{	display: block;	float: left;	margin: 0px 0 0 0;	}body {
+.clear	{
+	clear: both;
+	font-size: 0px;
+	height: 0;
+	line-height: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.nav	{
+	float: left;
+	font-family: Tahoma;
+	font-size: 13px;
+	height: 38px;
+	position: relative;
+	width: 600px;
+	min-width: 600px;
+	z-index: 500;
+	}
+
+.nav-outer	{
+	margin: 0 auto;
+	max-width: 1260px;
+	min-width: 850px;
+	}
+
+#nav-right	{
+	float: right;
+	position: relative;
+	width: 225px;
+	z-index: 0;
+	}
+
+#nav-right a	{
+	display: block;
+	float: left;
+	margin: 0px 0 0 0;
+	}
+
+body {
     padding-top: 0;
+}
+
+#page-heading	{
+	margin: 0 0 15px 20px;
+	}
+  h1	{
+	color: #4b4b4b;
+	font-family: Tahoma;
+	font-size: 22px;
+	line-height: 24px;
+	font-weight: normal;
+	}
+h2	{
+	color: #393939;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 20px;
+	margin-bottom: 10px;
+	}
+h3	{
+	color: #92b22c;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 18px;
+	margin-bottom: 10px;
+	}
+
+
+
+#product-table	{
+	margin-bottom: 20px;
+	}
+#product-table	td a	{
+	color: #393939;
+	}
+#product-table	td a:hover	{
+	text-decoration: underline;
+	}
+#product-table	th	{
+	height: 50px;
+	text-align: left;
+	}
+#product-table	.minwidth-1	{
+	min-width: 110px;
+	}
+#product-table td	{
+	border: 1px solid #d2d2d2;
+	padding: 10px 0 10px 10px;
+	}
+#product-table tr.even	{
+	background: #ececec;
+	}
+
+#product-table .sorting_1 {
+    background: inherit;
 }

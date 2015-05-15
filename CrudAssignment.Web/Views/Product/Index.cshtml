@@ -99,11 +99,11 @@
                     data.forEach(function(product) {
                         var row = '<tr>';
                         row += '<td><input id="row-checkbox" name="row-checkbox" value="{0}" type="checkbox"></td>'.format(product.id);
-                        row += '<td>{0}</td>'.format(product.category);
-                        row += '<td>{0}</td>'.format(product.supplier);
                         row += '<td>{0}</td>'.format(product.name);
+                        row += '<td>{0}</td>'.format(product.category);
                         row += '<td>{0}</td>'.format(displayMoney(product.price));
                         row += '<td>{0}</td>'.format(displayDays(product.deliveryPeriod));
+                        row += '<td>{0}</td>'.format(product.supplier);
                         row += '<td>{0}</td>'.format(product.minimumStock);
                         row += '<td><button title="Edit" class="icon-1 info-tooltip" onclick="editSelectedProduct({0})"></button><button title="Delete" class="icon-2 info-tooltip" onclick="confirmDeleteSelectedProduct({0})"></button></td>'.format(product.id);
                         row += '</tr>';
@@ -191,11 +191,10 @@
     </script>
 }
 
-<h2>Index</h2>
+<div id="page-heading">
+    <h1>Add product</h1>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <div id="table-content">
     <!--  start message-red -->
     <div id="message-red" style="display: none">
@@ -229,19 +228,19 @@
                     @Html.CheckBox("select-all", new { id = "select-all" })
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Category.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Supplier.Name)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category.Name)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Price)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.DeliveryPeriod)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Supplier.Name)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.MinimumStock)
