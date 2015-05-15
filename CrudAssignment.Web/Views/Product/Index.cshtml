@@ -254,25 +254,28 @@
     </table>
 </div>
 
-    <div id="actions-box">
-        <a href="" id="action-menu" class="action-slider"></a>
-        <div id="actions-box-slider">
-            <button id="action-edit" class="action-edit" onclick="editSelectedProduct(getSelectedEntriesId())">Edit</button>
-            <button id="action-delete" class="action-delete" onclick="confirmDeleteSelectedProduct(getSelectedEntriesId())">Delete</button>
-            @Html.ActionLink("Add", "Create", null, new { id = "action-add", @class = "action-add" })
-        </div>
+<div id="actions-box">
+    <a href="" id="action-menu" class="action-slider"></a>
+    <div id="actions-box-slider">
+        <button id="action-edit" class="action-edit" onclick="editSelectedProduct(getSelectedEntriesId())">Edit</button>
+        <button id="action-delete" class="action-delete" onclick="confirmDeleteSelectedProduct(getSelectedEntriesId())">Delete</button>
+        @Html.ActionLink("Add", "Create", null, new { id = "action-add", @class = "action-add" })
     </div>
+</div>
 
-    <div id="wrapper">
-        <div id="overlay" class="overlay"></div>
-        <div id="delete-confirm-boxpopup" class="box">
-            <a onclick="closeDialog('delete-confirm-boxpopup');" class="boxclose"></a>
-            <div id="delete-confirm-popup-content">
-                <h3>Do you want to delete selected products?</h3>
-                <div id="delete-confirm-content-table"></div>
-                @*TODO: pass ids exacly the same as before*@
-                <button onclick="deleteSelectedProduct(getSelectedEntriesId());">Yes</button>
-                <button onclick="closeDialog('delete-confirm-boxpopup');">No</button>
-            </div>
+<div style="height: 85px"></div>
+
+
+<div id="wrapper">
+    <div id="overlay" class="overlay"></div>
+    <div id="delete-confirm-boxpopup" class="box">
+        <a onclick="closeDialog('delete-confirm-boxpopup');" class="boxclose"></a>
+        <div id="delete-confirm-popup-content">
+            <h3>Do you want to delete selected products?</h3>
+            <div id="delete-confirm-content-table"></div>
+            @*TODO: pass ids exacly the same as before*@
+            <button onclick="deleteSelectedProduct(getSelectedEntriesId());">Yes</button>
+            <button onclick="closeDialog('delete-confirm-boxpopup');">No</button>
         </div>
     </div>
+</div>
