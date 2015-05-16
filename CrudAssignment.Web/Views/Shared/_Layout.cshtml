@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row">
+        <div id="navigation" class="row">
             <div id="page-top-outer" class="col-md-12">
             </div>
             <div class="nav-outer-repeat col-md-12">
@@ -27,9 +27,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-                @RenderBody()
+            <div class="col-md-10 col-md-offset-1">
+               @RenderBody()
             </div>
         </div>
     </div>
