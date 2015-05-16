@@ -21,11 +21,16 @@ namespace CrudAssignment.Test
         [TestMethod]
         public void ProductInsertTest()
         {
+            // Arrange
             var productService = unityContainer.Resolve<IRepository<Product>>();
             var unitOfWork = unityContainer.Resolve<IUnitOfWorkAsync>();
             productService.Insert(new Product());
             unitOfWork.SaveChanges();
+
+            // Act
             var products = productService.Queryable().ToList();
+
+            // Assert
             Assert.AreEqual(products.Count(), 1);
         }
     }
