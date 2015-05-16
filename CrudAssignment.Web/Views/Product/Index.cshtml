@@ -165,8 +165,7 @@
         }
 
         function openDeleteConfirmationDialog(productsToDelete) {
-            //TODO: Scale window minimum height (or add scroll)
-            var productsToDeleteTable = "<table border=1><tr><td>Id</td><td>Name</td></tr>";
+            var productsToDeleteTable = '<table width=100% border=1><tr><td>Id</td><td>Name</td></tr>';
             productsToDelete.forEach(function(product) {
                 productsToDeleteTable += "<tr>";
                 productsToDeleteTable += "<td>" + product.id + "</td>";
@@ -269,13 +268,14 @@
 <div id="wrapper">
     <div id="overlay" class="overlay"></div>
     <div id="delete-confirm-boxpopup" class="box">
-        <a onclick="closeDialog('delete-confirm-boxpopup');" class="boxclose"></a>
-        <div id="delete-confirm-popup-content">
-            <h3>Do you want to delete selected products?</h3>
-            <div id="delete-confirm-content-table"></div>
-            @*TODO: pass ids exacly the same as before*@
-            <button onclick="deleteSelectedProduct(getSelectedEntriesId());">Yes</button>
-            <button onclick="closeDialog('delete-confirm-boxpopup');">No</button>
+        <div class="row">
+            <div class="centered">
+                <h3>Do you want to delete selected products?</h3>
+                <div id="delete-confirm-content-table"></div>
+                @*TODO: pass ids exacly the same as before*@
+                <button onclick="deleteSelectedProduct(getSelectedEntriesId());">Yes</button>
+                <button onclick="closeDialog('delete-confirm-boxpopup');">No</button>
+            </div>
         </div>
     </div>
 </div>
