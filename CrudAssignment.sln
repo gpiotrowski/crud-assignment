@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.Pattern.Ef6", "F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Pattern", "Frameworks\Service.Pattern\Service.Pattern.csproj", "{86F86650-EE3C-4372-8FEC-40C2FE015022}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudAssignment.Test", "CrudAssignment.Test\CrudAssignment.Test.csproj", "{7FD8F43F-093E-4332-8BE6-23E5D4A99BF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,12 @@ Global
 		{86F86650-EE3C-4372-8FEC-40C2FE015022}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86F86650-EE3C-4372-8FEC-40C2FE015022}.Release|Any CPU.Build.0 = Release|Any CPU
 		{86F86650-EE3C-4372-8FEC-40C2FE015022}.Release|x86.ActiveCfg = Release|Any CPU
+		{7FD8F43F-093E-4332-8BE6-23E5D4A99BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD8F43F-093E-4332-8BE6-23E5D4A99BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD8F43F-093E-4332-8BE6-23E5D4A99BF8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7FD8F43F-093E-4332-8BE6-23E5D4A99BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD8F43F-093E-4332-8BE6-23E5D4A99BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD8F43F-093E-4332-8BE6-23E5D4A99BF8}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
