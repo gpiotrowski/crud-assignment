@@ -41,7 +41,7 @@ namespace CrudAssignment.Test
 
             // Assert
             Assert.IsInstanceOfType(result.Result, typeof(RedirectResult));
-            Assert.AreEqual((result.Result as RedirectResult).Url, redirectUrl);
+            Assert.AreEqual(redirectUrl, (result.Result as RedirectResult).Url);
         }
 
         private async Task<SignInStatus> MockPasswordSignInAsync(string mail, string password, bool isPersistent, bool shouldLockout)
