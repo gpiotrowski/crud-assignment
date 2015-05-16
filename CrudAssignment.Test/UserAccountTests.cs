@@ -44,6 +44,33 @@ namespace CrudAssignment.Test
             Assert.AreEqual(redirectUrl, (result.Result as RedirectResult).Url);
         }
 
+        [TestMethod]
+        public void UserLoginFailure()
+        {
+            // Arrange
+            var userStore = new Mock<IUserStore<ApplicationUser>>();
+            var userManager = new Mock<ApplicationUserManager>(userStore.Object);
+            var authenticationManager = new Mock<IAuthenticationManager>();
+            var signInManager = new Mock<ApplicationSignInManager>(userManager.Object, authenticationManager.Object);
+
+            signInManager.Setup(s => s.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
+                .Returns<string, string, bool, bool>(MockPasswordSignInAsync);
+
+            var accountController = new AccountController(userManager.Object, signInManager.Object);
+
+            var contextMock = new Mock<HttpContextBase>();
+            accountController.Url = new UrlHelper(new RequestContext(contextMock.Object, new RouteData()));
+
+            var redirectUrl = "/testSuccess";
+
+            // Act
+            var result = accountController.Login(new LoginViewModel() { Email = "a@b.cd", Password = "badPassword", RememberMe = false }, redirectUrl);
+
+            // Assert
+            Assert.IsInstanceOfType(result.Result, typeof(ViewResult));
+            Assert.AreEqual("Invalid login attempt.", (result.Result as ViewResult).ViewData.ModelState[""].Errors[0].ErrorMessage);
+        }
+
         private async Task<SignInStatus> MockPasswordSignInAsync(string mail, string password, bool isPersistent, bool shouldLockout)
         {
             if(mail == "a@b.cd" && password == "Pa$$w0rd")
