@@ -324,3 +324,70 @@ h3	{
 	text-indent: -3000px;
 	width: 80px;
 }
+
+#logo-login	{
+	float: left;
+	height: 35px;
+	margin: 145px 0 0 15px;
+	}
+
+#loginbox	{
+	background: url(/Content/images/login/loginbox_bg.png) no-repeat;
+	font-size: 12px;
+	height: 272px;
+	line-height: 12px;
+	padding-top: 60px;
+	position: relative;
+	width: 508px;
+	}
+#login-inner	{
+	color: #161616;
+	font-family: Tahoma;
+	font-size: 13px;
+	line-height: 12px;
+	margin: 0 auto;
+	width: 310px;
+	}
+#login-inner label	{
+	color: #161616;
+	cursor: pointer;
+	font-family: Tahoma;
+	font-weight: bold;
+	line-height: 12px;
+	padding-left: 10px;
+	 
+	}
+#login-inner th	{
+	padding: 0 0 6px 0;
+	text-align: left;
+	width: 95px;
+	}
+#login-inner td	{
+	padding: 0 0 6px 0;
+	}
+.login-inp	{
+	background: url(/Content/images/login/inp_login.gif) no-repeat;
+	border: none;
+	color: #fff;
+	font-size: 16px;
+	height: 36px;
+	padding: 6px 6px 0 10px;
+	width: 220px;
+}
+.submit-login	{
+	background: url(/Content/images/login/submit_login.gif) no-repeat;
+	border: none;
+	cursor: pointer;
+	display: block;
+	height: 29px;
+	text-indent: -3000px;
+	width: 73px;
+	}
+.submit-login:hover	{
+	background: url(/Content/images/login/submit_login.gif) no-repeat 0 -29px;
+	}
+  .checkbox-size	{
+	width:13px;
+	height:13px;
+	margin: 5px 0;
+	}	
