@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Repository.Pattern.Ef6;
 
 namespace CrudAssignment.Entities.Models
 {
-    public partial class AspNetRole
+    public partial class AspNetRole : Entity
     {
         public AspNetRole()
         {

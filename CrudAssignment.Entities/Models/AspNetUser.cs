@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Repository.Pattern.Ef6;
 
 namespace CrudAssignment.Entities.Models
 {
-    public partial class AspNetUser
+    public partial class AspNetUser : Entity
     {
         public AspNetUser()
         {
