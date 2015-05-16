@@ -37,7 +37,7 @@ namespace CrudAssignment.Test
             var redirectUrl = "/testSuccess";
 
             // Act
-            var result = accountController.Login(new LoginViewModel() { Email = "a@b.cd", Password = "Pa$$w0rd", RememberMe = false }, redirectUrl);
+            var result = accountController.Login(new LoginViewModel() { UserName = "User", Password = "Pa$$w0rd", RememberMe = false }, redirectUrl);
 
             // Assert
             Assert.IsInstanceOfType(result.Result, typeof(RedirectResult));
@@ -64,16 +64,16 @@ namespace CrudAssignment.Test
             var redirectUrl = "/testSuccess";
 
             // Act
-            var result = accountController.Login(new LoginViewModel() { Email = "a@b.cd", Password = "badPassword", RememberMe = false }, redirectUrl);
+            var result = accountController.Login(new LoginViewModel() { UserName = "User", Password = "badPassword", RememberMe = false }, redirectUrl);
 
             // Assert
             Assert.IsInstanceOfType(result.Result, typeof(ViewResult));
             Assert.AreEqual("Invalid login attempt.", (result.Result as ViewResult).ViewData.ModelState[""].Errors[0].ErrorMessage);
         }
 
-        private async Task<SignInStatus> MockPasswordSignInAsync(string mail, string password, bool isPersistent, bool shouldLockout)
+        private async Task<SignInStatus> MockPasswordSignInAsync(string userName, string password, bool isPersistent, bool shouldLockout)
         {
-            if(mail == "a@b.cd" && password == "Pa$$w0rd")
+            if (userName == "User" && password == "Pa$$w0rd")
             {
                 return SignInStatus.Success;
             }

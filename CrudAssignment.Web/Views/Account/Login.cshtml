@@ -28,10 +28,10 @@
                     <table cellspacing="0" cellpadding="0" border="0">
                         <tbody>
                             <tr>
-                                <th>@Html.LabelFor(m => m.Email)</th>
+                                <th>@Html.LabelFor(m => m.UserName)</th>
                                 <td>
-                                    @Html.TextBoxFor(m => m.Email, new { @class = "login-inp" })
-                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "login-inp" })
+                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                                 </td>
                             </tr>
                             <tr>
