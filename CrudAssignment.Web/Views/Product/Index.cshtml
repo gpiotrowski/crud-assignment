@@ -16,11 +16,11 @@
     <script src="/Scripts/jquery-ui.min.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-        $(function () {
+        $(function() {
             $(document).tooltip({
-                    track: true,
-                    delay: 0,
-                    position: { my: "left+5 bottom-10", at: "left bottom" }
+                track: true,
+                delay: 0,
+                position: { my: "left+5 bottom-10", at: "left bottom" }
             });
         });
     </script>
@@ -116,7 +116,7 @@
 
         function editSelectedProduct(id) {
             if (id != null && id == parseInt(id)) {
-                var url = "@Url.Action("Edit", "Product", new { id = "__id__"})".replace("__id__", id);
+                var url = "@Url.Action("Edit", "Product", new {id = "__id__"})".replace("__id__", id);
                 window.location.href = url;
             } else {
                 showErrorDialog(id, "edit");
@@ -153,7 +153,7 @@
             $('#error-try-again').off('click');
             $('#error-try-again').click(function() {
                 $('#message-red').fadeOut('slow');
-                switch(action) {
+                switch (action) {
                     case "delete":
                         confirmDeleteSelectedProduct(ids);
                         break;
@@ -166,7 +166,9 @@
 
         function openDeleteConfirmationDialog(productsToDelete) {
             var productsToDeleteTable = '<table width=100% border=1><tr><td>Id</td><td>Name</td></tr>';
+            var productsToDeleteIds = [];
             productsToDelete.forEach(function(product) {
+                productsToDeleteIds.push(product.id);
                 productsToDeleteTable += "<tr>";
                 productsToDeleteTable += "<td>" + product.id + "</td>";
                 productsToDeleteTable += "<td>" + product.name + "</td>";
@@ -175,6 +177,12 @@
             productsToDeleteTable += "</table>";
 
             $("#delete-confirm-content-table").html(productsToDeleteTable);
+
+            $("#delete-confirm-button").click(function () {
+                deleteSelectedProduct(productsToDeleteIds);
+                $("#delete-confirm-button").unbind("click");
+            });
+
             openDialog('delete-confirm-boxpopup');
         }
 
@@ -272,8 +280,7 @@
             <div class="centered">
                 <h3>Do you want to delete selected products?</h3>
                 <div id="delete-confirm-content-table"></div>
-                @*TODO: pass ids exacly the same as before*@
-                <button onclick="deleteSelectedProduct(getSelectedEntriesId());">Yes</button>
+                <button id="delete-confirm-button">Yes</button>
                 <button onclick="closeDialog('delete-confirm-boxpopup');">No</button>
             </div>
         </div>
