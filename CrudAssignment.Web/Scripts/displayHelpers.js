@@ -1,5 +1,5 @@
 ﻿function displayMoney(value) {
-    return value.formatMoney(2, ",", ".") + " €";
+    return value.formatMoney(2, ",", "") + " €";
 }
 
 function displayDays(value) {
