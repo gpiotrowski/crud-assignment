@@ -28,6 +28,12 @@
                     <table cellspacing="0" cellpadding="0" border="0">
                         <tbody>
                             <tr>
+                                <th></th>
+                                <td>
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>@Html.LabelFor(m => m.UserName)</th>
                                 <td>
                                     @Html.TextBoxFor(m => m.UserName, new { @class = "login-inp" })
