@@ -6,6 +6,10 @@ namespace CrudAssignment.Web.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        [Display(Name = "Nickname")]
+        public string UserName { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
