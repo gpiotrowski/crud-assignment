@@ -1,0 +1,17 @@
+﻿.sorting {
+    background-image: url("/Content/images/sort_both.png") !important;
+    background-position: right center !important;
+    background-repeat: repeat-x !important;
+}
+
+.sorting_asc {
+    background-image: url("/Content/images/sort_asc.png") !important;
+    background-position: right center !important;
+    background-repeat: repeat-x !important;
+}
+
+.sorting_desc {
+    background-image: url("/Content/images/sort_desc.png") !important;
+    background-position: right center !important;
+    background-repeat: repeat-x !important;
+}

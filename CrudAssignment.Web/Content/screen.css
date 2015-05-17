@@ -283,7 +283,6 @@ h3	{
 	text-decoration: underline;
 	}
 #product-table	th	{
-	height: 50px;
 	text-align: left;
 	}
 #product-table	.minwidth-1	{
@@ -395,3 +394,19 @@ h3	{
 .form-control {
     min-width: 200px;
 }
+.table-header-repeat	{
+	background: url(/Content/images/table/table_header_repeat.jpg) repeat-x !important;
+	border: none;
+	font-size: 13px;
+	line-height: 0;
+	padding: 0px 0 0 0;
+    color: white;
+    font-family: Tahoma;
+    font-weight: bold;
+	line-height: 14px;
+	}
+th.line-left	{
+	border-left: 1px solid #373737;
+	}
+
+th.sized	{
