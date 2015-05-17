@@ -18,12 +18,15 @@ namespace CrudAssignment.Entities.Models
         public string Name { get; set; }
         [Required]
         [DisplayName("Price")]
+        [Range(0, 9999999999999999.99)]
         public decimal Price { get; set; }
         [Required]
         [DisplayName("Delivery period")]
+        [Range(0, int.MaxValue)]
         public int DeliveryPeriod { get; set; }
         [Required]
         [DisplayName("Minimum stock")]
+        [Range(0, int.MaxValue)]
         public int MinimumStock { get; set; }
         [Required]
         public int CategoryId { get; set; }

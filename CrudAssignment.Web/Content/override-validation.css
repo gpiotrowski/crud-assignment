@@ -6,5 +6,6 @@ span.field-validation-error {
     padding: 7px 15px 10px 15px;
     color: #fff;
     line-height: 14px;
-    background: url(/Content/images/forms/error_message.gif)
+    background: url(/Content/images/forms/error_message.gif);
+    background-repeat: no-repeat;
 }
