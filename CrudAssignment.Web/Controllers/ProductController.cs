@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using CrudAssignment.Entities.Models;
 using CrudAssignment.Service;
+using CrudAssignment.Web.Helpers;
 using Repository.Pattern.Infrastructure;
 using Repository.Pattern.UnitOfWork;
 
@@ -16,6 +17,7 @@ namespace CrudAssignment.Web.Controllers
 {
     [RequireHttps]
     [Authorize]
+    [NoCache]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
