@@ -52,15 +52,16 @@
                                 <th></th>
                                 <td>
                                     <input type="submit" class="submit-login">
-                                    <br/>
-                                    <section id="socialLoginForm">
-                                        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-                                    </section>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 }
+                <div align="right">
+                    <section id="socialLoginForm">
+                        @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                    </section>
+                </div>
             </div>
         </div>
     </div>
