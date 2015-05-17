@@ -6,6 +6,7 @@
 
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="/Content/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="/Content/override-dataTables.css">
 <link rel="stylesheet" href="/Content/popup.css" type="text/css" media="screen" title="default">
 <link rel="stylesheet" href="/Content/jquery-ui.min.css" type="text/css"/>
 @section scripts
@@ -202,72 +203,90 @@
     <h1>Add product</h1>
 </div>
 
-<div id="table-content">
-    <!--  start message-red -->
-    <div id="message-red" style="display: none">
-        <table border="0" width="100%" cellpadding="0" cellspacing="0">
+<div id="table-content" >
+    <table id="content-table" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
             <tr>
-                <td class="red-left">Error. <a id="error-try-again" href="">Please try again.</a></td>
-                <td class="red-right"><a class="close-red"><img src="/Content/images/table/icon_close_red.gif" alt="" /></a></td>
+                <th class="sized" rowspan="3"><img width="20" height="300" alt="" src="/Content/images/shared/side_shadowleft.jpg"></th>
+                <th class="topleft"></th>
+                <td id="tbl-border-top">&nbsp;</td>
+                <th class="topright"></th>
+                <th class="sized" rowspan="3"><img width="20" height="300" alt="" src="/Content/images/shared/side_shadowright.jpg"></th>
             </tr>
-        </table>
-    </div>
-    <!--  end message-red -->
-    <!--  start message-green -->
-    @if (@Convert.ToBoolean(@TempData["AddedSuccessfully"]))
-    {
-        <div id="message-green">
-            <table border="0" width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td class="green-left">Product added sucessfully. <a href="@Url.Action("Create", "Product")">Add new one.</a></td>
-                    <td class="green-right"><a class="close-green"><img src="/Content/images/table/icon_close_green.gif" alt="" /></a></td>
-                </tr>
-            </table>
-        </div>
-    }
-    <!-- end message-green -->
-
-
-    <table id="product-table" class="display dataTable">
-        <thead>
             <tr>
-                <th>
-                    @Html.CheckBox("select-all", new { id = "select-all" })
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DeliveryPeriod)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Supplier.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MinimumStock)
-                </th>
-                <th></th>
+                <td id="tbl-border-left"></td>
+                <td>
+                    <!--  start message-red -->
+                    <div id="message-red" style="display: none">
+                        <table border="0" width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="red-left">Error. <a id="error-try-again" href="">Please try again.</a></td>
+                                <td class="red-right"><a class="close-red"><img src="/Content/images/table/icon_close_red.gif" alt="" /></a></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--  end message-red -->
+                    <!--  start message-green -->
+                    @if (@Convert.ToBoolean(@TempData["AddedSuccessfully"]))
+                    {
+                        <div id="message-green">
+                            <table border="0" width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="green-left">Product added sucessfully. <a href="@Url.Action("Create", "Product")">Add new one.</a></td>
+                                    <td class="green-right"><a class="close-green"><img src="/Content/images/table/icon_close_green.gif" alt="" /></a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    }
+                    <!-- end message-green -->
+
+                    <table id="product-table" class="display dataTable">
+                        <thead>
+                            <tr>
+                                <th class="table-header-repeat">
+                                    @Html.CheckBox("select-all", new { id = "select-all" })
+                                </th>
+                                <th class="table-header-repeat line-left">
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th class="table-header-repeat line-left">
+                                    @Html.DisplayNameFor(model => model.Category.Name)
+                                </th>
+                                <th class="table-header-repeat line-left">
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th class="table-header-repeat line-left">
+                                    @Html.DisplayNameFor(model => model.DeliveryPeriod)
+                                </th>
+                                <th class="table-header-repeat line-left">
+                                    @Html.DisplayNameFor(model => model.Supplier.Name)
+                                </th>
+                                <th class="table-header-repeat line-left">
+                                    @Html.DisplayNameFor(model => model.MinimumStock)
+                                </th>
+                                <th class="table-header-repeat line-left"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="product-table-body"></tbody>
+                    </table>
+                    <div id="actions-box">
+                        <a href="" id="action-menu" class="action-slider"></a>
+                        <div id="actions-box-slider">
+                            <button id="action-edit" class="action-edit" onclick="editSelectedProduct(getSelectedEntriesId())">Edit</button>
+                            <button id="action-delete" class="action-delete" onclick="confirmDeleteSelectedProduct(getSelectedEntriesId())">Delete</button>
+                            @Html.ActionLink("Add", "Create", null, new { id = "action-add", @class = "action-add" })
+                        </div>
+                    </div>
+                </td>
+                <td id="tbl-border-right"></td>
             </tr>
-        </thead>
-
-        <tbody id="product-table-body"></tbody>
-
+            <tr>
+                <th class="sized bottomleft"></th>
+                <td id="tbl-border-bottom">&nbsp;</td>
+                <th class="sized bottomright"></th>
+            </tr>
+        </tbody>
     </table>
-</div>
-
-<div id="actions-box">
-    <a href="" id="action-menu" class="action-slider"></a>
-    <div id="actions-box-slider">
-        <button id="action-edit" class="action-edit" onclick="editSelectedProduct(getSelectedEntriesId())">Edit</button>
-        <button id="action-delete" class="action-delete" onclick="confirmDeleteSelectedProduct(getSelectedEntriesId())">Delete</button>
-        @Html.ActionLink("Add", "Create", null, new { id = "action-add", @class = "action-add" })
-    </div>
 </div>
 
 <div style="height: 85px"></div>
