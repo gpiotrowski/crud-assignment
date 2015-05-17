@@ -12,6 +12,7 @@ using CrudAssignment.Web.Models;
 
 namespace CrudAssignment.Web.Controllers
 {
+    [RequireHttps]
     [Authorize]
     public class AccountController : Controller
     {

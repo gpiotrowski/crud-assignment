@@ -14,6 +14,7 @@ using Repository.Pattern.UnitOfWork;
 
 namespace CrudAssignment.Web.Controllers
 {
+    [RequireHttps]
     [Authorize]
     public class ProductController : Controller
     {
