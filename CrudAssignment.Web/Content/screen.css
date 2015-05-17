@@ -459,3 +459,14 @@ height:15px;
 #tbl-border-right	{
 	background: url(/Content/images/shared/border_bit.jpg) right repeat-y;
 	}
+
+span.field-validation-valid {
+    display: none;
+}
+
+span.field-validation-error {
+    padding: 7px 15px 10px 15px;
+    color: #fff;
+    line-height: 14px;
+    background: url(/Content/images/forms/error_message.gif)
+}
